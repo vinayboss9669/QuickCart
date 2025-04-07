@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
 import User from "@/models/User";
-
+import { serve } from "inngest/next";
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
 
@@ -71,4 +71,5 @@ async ({event})=>{
     await User.findByIdAndDelete(id)
   }
 
-)
+);
+export default serve(inngest);
